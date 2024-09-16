@@ -129,7 +129,7 @@ export const venuesData = [
   {
     name: "Whispering Pines",
     no_of_seats: "1 - 49",
-    date_created: "string",
+    date_created: "string", 
     managers: [
       {
         email: "odunamilde@gmail.com",
