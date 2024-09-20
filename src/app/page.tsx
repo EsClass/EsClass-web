@@ -1,5 +1,7 @@
 "use client";
 
+import Footer from "@/components/Footer/Footer";
+import Hero from "@/components/Hero/Hero";
 import { GlobalStyles } from "@mui/material";
 import { useEffect } from "react";
 
@@ -12,7 +14,12 @@ const styles = (
 );
 
 export default function Home() {
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
-  return <div className="root">{styles}</div>;
+  return <div className="root">
+    <Hero />
+    {styles}
+
+    
+  </div>;
 }

@@ -15,10 +15,11 @@ a {
   outline: 0;
   padding: 0;
   margin: 0;
+  
 }
 
 :root {
-  --primary: #012970;
+  --primary: #000000;
   --secondary: #101928;
   --background: #fff8f2;
   --background2: #f4f3ec;
@@ -43,6 +44,7 @@ a {
   font-weight: 300 !important;
 }
 a {
+  text-decoration: none;
   color: var(--primary);
   font-weight: 500;
 }
@@ -87,7 +89,33 @@ a {
   align-items: center;
   justify-content: center;
 }
+.btn_green{
+  border: #00CB4B solid 5px;
+  color: #fff;
+  background: #00CB4B;
+  border-radius: 45px;
+  padding: 10px 30px;
+  font-size: 20px;
+}
+.btn_login{
+  font-size: 25px;
+  background: none;
+  color: #000000;
 
+
+}
+.btn_purple{
+  border: #8F3BE4 solid 5px;
+  color: #fff;
+  background: #8F3BE4;
+  border-radius: 45px;
+  padding: 10px 30px;
+  font-size: 20px;
+  
+}
+button{
+  cursor: pointer;
+}
 .section {
   padding: 5vh 25px;
 }

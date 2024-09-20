@@ -5,6 +5,14 @@ import { Avatar, Box, GlobalStyles } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Button from "../Button/Button";
+import LinksData from "../links/LinksData";
+import Hero from "../Hero/Hero";
+import Footer from "../Footer/Footer";
+import Frist_section from "../Hero/First_section/Frist_section";
+import Link from "next/link";
+
+
 
 export const drawerWidth = 340;
 
@@ -13,7 +21,7 @@ const styles = (
     styles={{
       ".header": {
         display: "flex",
-        padding: "15px 3vw",
+        padding: "15px 5vw",
         alignItems: "center",
         background: "#fff",
         borderBottom: "1px solid #eee",
@@ -36,30 +44,76 @@ function MainNav({ children }: any) {
   return (
     <div className="wrapper">
       {styles}
-      <nav className="header">
-        <Image
-          style={{ height: 50, width: "auto" }}
-          src={require("../../../public/images/logo.png")}
-          alt=""
-        />
+      <nav className="header" style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
 
-        <Box
-          ml="auto"
-          className="flex"
-          onMouseEnter={(e) => {
-            setAnchor(e.currentTarget);
-          }}
-          onMouseLeave={() => {
-            setAnchor(null);
-          }}
-        >
-          <Avatar alt="" sx={{ background: "var(--primary)" }} />
 
-          <ExpandMore sx={{ fontSize: 36, color: "var(--grey)" }} />
-        </Box>
+      }}>
+        <div>
+          <Image
+
+            src="/images/landingpage_image/logo.png"
+            alt="header logo"
+            width={150}
+            height={50}
+
+          />
+
+        </div>
+        <div>
+          <LinksData />
+
+        </div>
+        <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          fontSize: 25,
+          gap: 40
+        }}>
+          <Button
+            type="button"
+            title="Login"
+            variant="btn_login"
+
+          />
+          <Link href={{pathname: `/getstart_page`,}}>
+            <Button
+
+
+
+              type="button"
+              title="Get Started"
+              variant="btn_green"
+
+            />
+
+
+          </Link>
+
+
+        </div>
       </nav>
-      <main className="main">{children}</main>
-    </div>
+
+      <main>
+
+        <div>
+
+          {children}
+          <div style={{
+            borderTop: "1px solid #eee",
+          }}>
+            <div style={{
+              padding: "15px 5vw",
+            }}>
+              <Footer />
+            </div>
+          </div>
+        </div>
+      </main>
+    </div >
   );
 }
 export default MainNav;
