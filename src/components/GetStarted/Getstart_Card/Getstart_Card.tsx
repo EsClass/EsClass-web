@@ -29,11 +29,11 @@ const Getstart_Card = () => {
             }}>
                 <div>
                     <Card style={{
+                        border: "1px solid #00CB4B",
 
                         borderRadius: '20px',
-                        padding: '20px',
-                        maxWidth: '400px',
-                        maxHeight: "auto",
+                        padding: '1px',
+                       
 
                         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
                     }}
@@ -50,9 +50,8 @@ const Getstart_Card = () => {
                             <CardMedia style={{
                                 padding: "15px 0px 15px"
                             }}>
-                                <Image src="/images/landingpage_image/student_icon.png" alt=''
-                                    width={300}
-                                    height={200}
+                                <img src="/images/landingpage_image/student_icon.png" alt=''
+                                    
                                 />
                             </CardMedia>
 
@@ -113,7 +112,7 @@ const Getstart_Card = () => {
                         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
                     }}
                         sx={{
-                            ":active": {
+                            ":act": {
 
                                 border: "5px solid #00CB4B",
 
@@ -125,9 +124,8 @@ const Getstart_Card = () => {
                             <CardMedia style={{
                                 padding: "15px 0px 15px"
                             }}>
-                                <Image src="/images/landingpage_image/tutor_icon.png" alt=''
-                                    width={300}
-                                    height={200}
+                                <img src="/images/landingpage_image/tutor_icon.png" alt=''
+                                   
                                 />
                             </CardMedia>
 

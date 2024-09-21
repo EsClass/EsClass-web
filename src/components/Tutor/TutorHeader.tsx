@@ -12,7 +12,9 @@ const TutorHeader = () => {
                     
                     textAlign: "center"
                 }}>
-                    <Typography variant='h3' fontWeight={500}>Create a Tutor account</Typography>
+                    <Typography variant='h4' fontWeight={700}>Create a <span style={{
+                        color: "#00CB4B",
+                    }}>Tutor</span><br />account </Typography>
                     <TutorForm />
                 </div>
 

@@ -24,7 +24,7 @@ const LinksData = () => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 gap: 50,
-                fontSize: 25
+                fontSize: 20
             }}>
 
                 {NavLink.map((links => (

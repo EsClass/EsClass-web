@@ -31,7 +31,7 @@ const styles = (
 );
 
 function MainNav({ children }: any) {
-  const route = usePathname();
+  
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((s) => s.auth);
 
@@ -52,13 +52,10 @@ function MainNav({ children }: any) {
 
       }}>
         <div>
-          <Image
-
+          <img
             src="/images/landingpage_image/logo.png"
             alt="header logo"
-            width={150}
-            height={50}
-
+            
           />
 
         </div>
@@ -81,19 +78,11 @@ function MainNav({ children }: any) {
           />
           <Link href={{pathname: `/getstart_page`,}}>
             <Button
-
-
-
               type="button"
               title="Get Started"
               variant="btn_green"
-
             />
-
-
           </Link>
-
-
         </div>
       </nav>
 
@@ -113,7 +102,7 @@ function MainNav({ children }: any) {
           </div>
         </div>
       </main>
-    </div >
+    </div>
   );
 }
 export default MainNav;
