@@ -1,16 +1,15 @@
-import Welcome_screen from '@/components/Welcome_screen/Welcome_screen'
+import Upload_profile from '@/components/Upload_profile/Upload_profile'
 import React from 'react'
 
 const page = () => {
   return (
     <div className='wrapper' style={{
         padding: "15px 5vw",
-  
-      }}>
-        <Welcome_screen/>
-  
-  
-      </div>
+    }}>
+        <Upload_profile/>
+       
+      
+    </div>
   )
 }
 

@@ -1,12 +1,12 @@
-import { Typography } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import React from 'react'
 import Getstart_Card from './Getstart_Card/Getstart_Card'
 
 const GetStarted = () => {
     return (
         <>
-            <div>
-                <div>
+            <Grid container spacing={5}>
+                <Grid item xs={12} mb={6}>
                     <div style={{
                         textAlign: "center",
 
@@ -37,9 +37,9 @@ const GetStarted = () => {
                     />
 
 
-                </div>
+                </Grid>
 
-            </div>
+            </Grid>
 
 
         </>

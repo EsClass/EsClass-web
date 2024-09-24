@@ -2,6 +2,7 @@ import { CheckBox } from '@mui/icons-material'
 import { Box, Button, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
 import Verify_Box from './Verify_Box'
+import Link from 'next/link'
 
 const Lecturer_verify = () => {
 
@@ -31,9 +32,9 @@ const Lecturer_verify = () => {
                         </div>
                         <div style={{
                             padding: "15px 0px ",
-                            
+
                         }}>
-                            <Typography variant='h5'  style={{
+                            <Typography variant='h5' style={{
                                 fontSize: "25.5px"
 
                             }}>We've sent a One-Time Password (OTP) to admin@lasu.edu.ng Please enter
@@ -55,7 +56,7 @@ const Lecturer_verify = () => {
                         justifyContent: "space-evenly",
                         alignItems: "center",
                         padding: "5rem 0rem 10rem"
-                        
+
 
                     }}>
                         <Button type='button' style={{
@@ -65,20 +66,20 @@ const Lecturer_verify = () => {
                             fontSize: "20px"
                         }}>Resend OTP</Button>
 
-                        <Button variant='contained'
+                        <Link href={{pathname: `/for_tutor/lecturer_verify/welcome_screen`}}>
+                            <Button variant='contained'
 
-                            className='btn_green' type='button' style={{
+                                className='btn_green' type='button' style={{
 
-                                border: " #00CB4B solid 5px",
-                                color: " #fff",
-                                background: "#00CB4B",
-                                borderRadius: "45px",
+                                    border: " #00CB4B solid 5px",
+                                    color: " #fff",
+                                    background: "#00CB4B",
+                                    borderRadius: "45px",
+                                }}>Verify Account
+                            </Button>
 
+                        </Link>
 
-
-
-                            }}>Verify Account
-                        </Button>
 
 
                     </div>
