@@ -26,14 +26,14 @@ const Welcome_screen = () => {
                     src="/images/landingpage_image/rafiki@2x.png" // Replace this with the image URL or import
                     alt="Welcome Illustration"
                     style={{
-                        width: "700px",
+                        width: "400px",
                         paddingBottom: "20px",
                         
                         margin: '20px 0'
                     }}
                 />
                 {/* Additional Text */}
-                <Typography variant="h5" paragraph style={{
+                <Typography variant="h5" fontWeight={300} paragraph style={{
                     textWrap: "wrap",
                     
 

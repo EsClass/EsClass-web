@@ -1,4 +1,5 @@
 import Button from '@/components/Button/Button';
+
 import { Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
@@ -20,6 +21,7 @@ const item2 = [
 const Getstart_Card = () => {
     return (
         <div>
+           
             <div style={{
                 display: "flex",
                 justifyContent: "center",
