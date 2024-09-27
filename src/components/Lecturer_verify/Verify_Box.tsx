@@ -3,12 +3,12 @@ import React from 'react'
 
 const Verify_Box = () => {
     return (
-        <Grid container spacing={2.5}
+        <Grid container spacing={2}
             justifyContent="center"
             alignItems='center'
         >
             {Array(6).fill("").map((index) => (
-                <Grid item key={index} justifyContent="center" >
+                <Grid item key={index} justifyContent="center"gap={5} sx={{}} xs={2}>
 
                     <TextField variant='outlined'
 

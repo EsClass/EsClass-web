@@ -32,7 +32,8 @@ const Header = () => {
 
         <>
             <AppBar sx={{
-                background: "white"
+                background: "white",
+                padding: "15px 5vw"
             }}>
                 <Toolbar>
                     <img
@@ -47,14 +48,11 @@ const Header = () => {
                         </>
                     ) : (
                         <>
-                            <Tabs sx={{
+                            <Tabs
 
-
-                            }}
-
-
-
-                                value={value} onChange={(e, value) => setvalue(value)} indicatorColor='primary'>
+                                value={value}
+                                onChange={(e, value) => setvalue(value)}
+                                indicatorColor='secondary'>
                                 {NavLink.map((cur, index) => (
                                     <Link style={{
                                         marginLeft: "10px",
@@ -71,7 +69,7 @@ const Header = () => {
 
                                 ))}
 
-                                {/* <Tab label="Product" />
+                                {/* <Tab label="Product"  h/>
                                 <Tab label="Home" />
                                 <Tab label="About" />
                                 <Tab label="Contact" /> */}
@@ -98,19 +96,19 @@ const Header = () => {
                             </Link> */}
                             <Button sx={{
                                 marginLeft: "auto",
-                                
+
                                 fontSize: "15px",
                                 background: "none",
                                 color: "#000000",
                             }} variant='outlined'> Login</Button>
 
-                            <Link href={{pathname: `/getstart_page`}}></Link>
+                            <Link href={{ pathname: `/getstart_page` }}></Link>
                             <Button variant='contained' sx={{
                                 marginLeft: "10px",
                                 background: "#00CB4B",
                                 border: "#00CB4B solid 5px",
                                 color: "#fff",
-                                
+
                                 borderRadius: "45px",
                                 padding: "5px 15px",
                                 fontSize: "15px",

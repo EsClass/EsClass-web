@@ -17,6 +17,7 @@ import Header from "../Header/Header";
 
 
 
+
 export const drawerWidth = 340;
 
 const styles = (
@@ -34,7 +35,7 @@ const styles = (
 );
 
 function MainNav({ children }: any) {
-  
+
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((s) => s.auth);
 
@@ -45,50 +46,19 @@ function MainNav({ children }: any) {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper" style={{
+      
+    }}>
       {styles}
-      <Header/>
-      {/* <nav className="header" style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
+      <Header />
+      <nav className="header">
 
 
-      }}>
-        <div>
-          <img
-            src="/images/landingpage_image/logo.png"
-            alt="header logo"
-            
-          />
+        <LinksData />
 
-        </div>
-        <div>
-          <LinksData />
 
-        </div>
-        <div style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          fontSize: 25,
-          gap: 40
-        }}>
-          <Button
-            type="button"
-            title="Login"
-            variant="btn_login"
 
-          />
-          <Link href={{pathname: `/getstart_page`,}}>
-            <Button
-              type="button"
-              title="Get Started"
-              variant="btn_green"
-            />
-          </Link>
-        </div>
-      </nav> */}
+      </nav>
 
       <main>
 
