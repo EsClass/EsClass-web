@@ -6,11 +6,11 @@ const AccountSetupForm = () => {
   const [expertise, setExpertise] = useState('');
   const [bank, setBank] = useState('');
 
-  const handleExpertiseChange = (event) => {
+  const handleExpertiseChange = ({event}:any) => {
     setExpertise(event.target.value);
   };
 
-  const handleBankChange = (event) => {
+  const handleBankChange = ({event}:any) => {
     setBank(event.target.value);
   };
 

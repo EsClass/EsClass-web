@@ -11,6 +11,9 @@ import Hero from "../Hero/Hero";
 import Footer from "../Footer/Footer";
 import Frist_section from "../Hero/First_section/Frist_section";
 import Link from "next/link";
+import Header from "../Header/Header";
+
+
 
 
 
@@ -44,7 +47,8 @@ function MainNav({ children }: any) {
   return (
     <div className="wrapper">
       {styles}
-      <nav className="header" style={{
+      <Header/>
+      {/* <nav className="header" style={{
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -84,7 +88,7 @@ function MainNav({ children }: any) {
             />
           </Link>
         </div>
-      </nav>
+      </nav> */}
 
       <main>
 
