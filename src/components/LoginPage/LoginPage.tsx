@@ -5,7 +5,7 @@ const LoginPage = () => {
   return (
     <Container maxWidth="sm" style={{ textAlign: 'center', marginTop: '50px' }}>
       
-      <Typography variant="h4" component="h2" fontWeight={700} gutterBottom>
+      <Typography variant="h5" component="h2" fontWeight={700} gutterBottom>
         Welcome back to <img src='/images/landingpage_image/logo.png'></img>
       </Typography>
 
@@ -17,7 +17,7 @@ const LoginPage = () => {
       {/* Form */}
       <form>
         <Grid container spacing={3} style={{ marginTop: '20px' }}>
-          {/* Email Address */}
+          
           <Grid item xs={12}>
             <TextField
               fullWidth
@@ -26,6 +26,10 @@ const LoginPage = () => {
               type="email"
               InputProps={{
                 endAdornment: <span role="img" aria-label="email">&#128231;</span>
+              }}
+              style={{
+                border: "1px solid gray",
+                borderRadius: "45px"
               }}
             />
           </Grid>
@@ -40,12 +44,18 @@ const LoginPage = () => {
               InputProps={{
                 endAdornment: <span role="img" aria-label="lock">&#128274;</span>
               }}
+              style={{
+                border: "1px solid gray",
+                borderRadius: "45px"
+              }}
             />
           </Grid>
 
           {/* Forgot Password Link */}
-          <Grid item xs={12} style={{ textAlign: 'right' }}>
-            <Link href="#" underline="none" style={{ color: '#00b050' }}>
+          <Grid item xs={12} style={{ textAlign: 'right',
+            fontWeight: 700
+           }}>
+            <Link href="#" underline="none" style={{ color: '#00CB4B' }}>
               Forgot Password?
             </Link>
           </Grid>
@@ -56,7 +66,7 @@ const LoginPage = () => {
               fullWidth
               variant="contained"
               style={{
-                backgroundColor: '#00b050',
+                backgroundColor: '#00CB4B',
                 color: 'white',
                 padding: '12px',
                 borderRadius: '25px',
@@ -68,7 +78,9 @@ const LoginPage = () => {
 
           {/* Create Account Link */}
           <Grid item xs={12}>
-            <Link href="#" underline="none" style={{ color: '#00b050' }}>
+            <Link href="#" underline="none" style={{ color: '#00CB4B',
+              fontWeight: 500
+            }}>
               Create account
             </Link>
           </Grid>

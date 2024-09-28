@@ -1,4 +1,5 @@
 import { Button, Container, Grid, Typography } from '@mui/material'
+import Link from 'next/link'
 import React from 'react'
 
 const Welcome_screen = () => {
@@ -28,26 +29,30 @@ const Welcome_screen = () => {
                     style={{
                         width: "400px",
                         paddingBottom: "20px",
-                        
+
                         margin: '20px 0'
                     }}
                 />
                 {/* Additional Text */}
                 <Typography variant="h5" fontWeight={300} paragraph style={{
                     textWrap: "wrap",
-                    
+
 
                 }}>
                     Thank you for providing your details. We just need a bit more information to finalize your account.
                     This will help us tailor your experience and ensure everything runs smoothly.
                 </Typography>
 
+                <Link href={{pathname: '/for_tutor/lecturer_verify/welcome_screen/accountSetupForm'}}>
                 <Button
                     variant="contained"
                     style={{ backgroundColor: '#00b050', color: 'white', padding: '10px 30px', borderRadius: '25px' }}
                 >
                     Let’s Go
                 </Button>
+                </Link>
+             
+               
 
 
 

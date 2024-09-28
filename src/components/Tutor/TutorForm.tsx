@@ -141,9 +141,7 @@ const TutorForm = () => {
                                     border: " #00CB4B solid 5px",
                                     color: " #fff",
                                     background: "#00CB4B",
-                                    borderRadius: "45px",
-
-
+                                    borderRadius: "45px"
 
 
                                 }}>Create an account

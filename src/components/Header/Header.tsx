@@ -44,11 +44,15 @@ const Header = () => {
                     {isMatch ? (
                         <>
 
+                    
+
                             <Drawer_compon />
                         </>
                     ) : (
                         <>
-                            <Tabs
+                            <Tabs sx={{
+                                marginLeft: "auto"
+                            }}
 
                                 value={value}
                                 onChange={(e, value) => setvalue(value)}
@@ -104,7 +108,7 @@ const Header = () => {
 
                             <Link href={{ pathname: `/getstart_page` }}></Link>
                             <Button variant='contained' sx={{
-                                marginLeft: "10px",
+                                marginLeft: "35px",
                                 background: "#00CB4B",
                                 border: "#00CB4B solid 5px",
                                 color: "#fff",

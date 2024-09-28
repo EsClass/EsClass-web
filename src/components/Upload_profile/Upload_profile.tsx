@@ -18,7 +18,7 @@ const Upload_profile = () => {
                 <div style={{
                     padding: "5px 0px 10px"
                 }}>
-                    <Typography variant="h4" component="h1" fontWeight={700} gutterBottom>
+                    <Typography variant="h3" component="h1" fontWeight={700} gutterBottom>
                         Finish Account Setup
                     </Typography>
 
@@ -26,11 +26,11 @@ const Upload_profile = () => {
 
 
 
-                <Typography variant="h5" fontSize={20} gutterBottom>
+                <Typography variant="h5"  gutterBottom>
                     Add a profile picture and provide some additional details to help us set up your personalized dashboard.                </Typography>
                 {/* Image */}
 
-                <Typography variant='h5' padding="4.5rem 0rem 1.5rem " fontWeight={700}>
+                <Typography variant='h5' padding="3rem 0rem 1.5rem " fontWeight={700}>
                     Upload Profile Picture
                 </Typography>
 
