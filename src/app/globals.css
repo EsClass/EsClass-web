@@ -4,6 +4,18 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+@keyframes pulsate {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 150%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -15,17 +27,15 @@ a {
   outline: 0;
   padding: 0;
   margin: 0;
-  
 }
 
 :root {
-  --primary: #000000;
-  --secondary: #101928;
-  --background: #fff8f2;
-  --background2: #f4f3ec;
-  --grey: #667185;
+  --primary: #00cb4b;
+  --secondary: #8f3be4;
+  --background: #f2fcf6;
+  --grey: #9a9a9a;
   --primary-gradient: linear-gradient(118.19deg, #ffaa00 4.84%, #ff7700 100%);
-  --max-container-width: 1440px;
+  --max-container-width: 1240px;
   --DataGrid-headersTotalHeight: 50px !important;
 }
 
@@ -39,12 +49,14 @@ a {
   display: inline-block;
   font-weight: 700;
 }
+.text-primary {
+  color: var(--primary);
+}
 .text {
-  color: var(--grey);
+  color: var(--secondary-tet);
   font-weight: 300 !important;
 }
 a {
-  text-decoration: none;
   color: var(--primary);
   font-weight: 500;
 }
@@ -89,35 +101,18 @@ a {
   align-items: center;
   justify-content: center;
 }
-.btn_green{
-  border: #00CB4B solid 5px;
-  color: #fff;
-  background: #00CB4B;
-  border-radius: 45px;
-  padding: 10px 30px;
-  font-size: 20px;
-}
-.btn_login{
-  font-size: 20px;
-  background: none;
-  color: #000000;
 
-
-}
-.btn_purple{
-  border: #8F3BE4 solid 5px;
-  color: #fff;
-  background: #8F3BE4;
-  border-radius: 45px;
-  padding: 10px 30px;
-  font-size: 20px;
-  
-}
-button{
-  cursor: pointer;
-}
 .section {
   padding: 5vh 25px;
+}
+.header-text {
+  font-weight: 500 !important;
+  font-size: 36px !important;
+}
+
+.section-header-text {
+  font-weight: 500 !important;
+  font-size: 28px !important;
 }
 
 .MuiDataGrid-cell,
@@ -137,4 +132,22 @@ button{
     max-width: var(--max-container-width);
     margin: 0 auto;
   }
+  .header-text {
+    font-size: 48px !important;
+  }
+  .section-header-text {
+    font-size: 38px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pulsate-bg {
+    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat;
+    animation: pulsate 10s ease-in-out infinite;
+  }
+}
+
+@media (min-width: 1360px) {
 }
