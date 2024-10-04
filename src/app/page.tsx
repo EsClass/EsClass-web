@@ -2,6 +2,7 @@
 
 import Footer from "@/components/navs/Footer";
 import Header from "@/components/navs/Header";
+import SearchBar from "@/components/Search/Searchbar";
 import { Box, Button, GlobalStyles, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -10,7 +11,7 @@ const styles = (
     styles={{
       ".header": {
         padding: 15,
-        paddingBottom: 100,
+        paddingBottom: 200,
         paddingTop: 120,
       },
     }}
@@ -45,10 +46,18 @@ const HomePAge = () => {
               mr: 10,
             }}
           />
-          <Typography className="text" mt={3} maxWidth={600} align="center">
+          <Typography
+            className="text"
+            mt={3}
+            maxWidth={600}
+            align="center"
+            mb={4}
+          >
             Access high-quality learning materials, assessments, and more from
             experienced tutors in your institution.
           </Typography>
+
+          <SearchBar />
         </Box>
       </header>
 
@@ -90,7 +99,7 @@ const HomePAge = () => {
           </Grid>
         </Box>
       </section>
-      <section className="section">
+      <section className="section" id="tutor">
         <Box className="section-inner">
           <Grid container spacing={{ xs: 3, lg: 12 }} alignItems={"center"}>
             <Grid item xs={12} md={6}>

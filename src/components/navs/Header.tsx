@@ -22,7 +22,7 @@ import { cloneElement, useState } from "react";
 import styles from "./Heade.module.css";
 
 interface Props {
-  watchScroll: boolean;
+  watchScroll?: boolean;
 }
 
 function Header({ watchScroll }: Props) {
@@ -143,7 +143,7 @@ function Header({ watchScroll }: Props) {
                 <Link style={{ color: "#000", marginRight: 20 }} href="/login">
                   Login
                 </Link>
-                <Link href="/book">
+                <Link href="/get-started">
                   <Button
                     size="large"
                     variant="contained"
