@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  background: #fff;
+  padding: 10px 0;
+}
+
+.scrolled {
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 3px 20px #0901;
+}
+
+.noScroll {
+  background: #fff;
+}
+
+.logo {
+  height: 30px;
+  margin-right: auto;
+}
+.nav {
+  display: flex;
+  margin: 0 auto;
+
+  align-self: stretch;
+  align-content: stretch;
+}
+
+.nav .item,
+.popperNav {
+  display: flex;
+  padding: 0 20px;
+  color: #7f7d7e;
+  align-items: center;
+}
+.active {
+  color: var(--primary) !important;
+  font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+  .logo {
+    height: 30px;
+    margin-right: 0;
+  }
+  .root {
+    padding: 15px !important;
+  }
+}
