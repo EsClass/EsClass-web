@@ -4,8 +4,8 @@ import { errorMessage, showMessage } from "@/utils/utility";
 import { setCourseLoading, setCourses } from "../slices/courseSlices";
 import { AppDispatch } from "../store";
 
-const handleError = (error: any, dispatch: AppDispatch) => {
-  dispatch(setCourseLoading(false));
+const handleError = (error: any, dispatch?: AppDispatch) => {
+  dispatch && dispatch(setCourseLoading(false));
   showMessage({
     variant: "error",
     message: errorMessage(error),
@@ -66,7 +66,7 @@ export const addResource =
   (data: AddResourceForm) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setCourseLoading(true));
-      const res = (await client.post("resource", data)).data;
+      const res = (await client.post("resources", data)).data;
       dispatch(setCourseLoading(false));
       return {
         success: true,
@@ -76,16 +76,14 @@ export const addResource =
     }
   };
 
-export const getResources = () => async (courseId: string) => {
+export const getResources = async (courseId: string) => {
   try {
-    dispatch(setCourseLoading(true));
-    const res = (await client.get("courses")).data;
-    dispatch(setCourseLoading(false));
-    dispatch(setCourses(res.data));
+    const res = (await client.get("resources/course/" + courseId)).data;
     return {
       success: true,
+      data: res.data,
     };
   } catch (error) {
-    return { ...handleError(error, dispatch) };
+    return { ...handleError(error) };
   }
 };

@@ -21,7 +21,7 @@
     "@svgr/webpack": "^8.1.0",
     "axios": "^1.7.3",
     "date-fns": "^3.6.0",
-    "firebase": "^10.13.1",
+    "firebase": "^10.14.0",
     "mime": "^4.0.4",
     "moment": "^2.30.1",
     "next": "14.2.3",

@@ -1,5 +1,6 @@
 import { FilePickerResult } from "@/types";
-import { errorMessage, filePicker, showMessage } from "@/utils/utility";
+import { filePicker } from "@/utils/filePicker";
+import { errorMessage, showMessage } from "@/utils/utility";
 import { Add } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
 import { FC, useState } from "react";
