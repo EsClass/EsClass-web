@@ -5,6 +5,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import AddNewResource from "./AddResource";
 import ResourceListItem from "./ResourceListItem";
+import { Resource } from "@/types/data-types";
 
 interface Props {
   course?: string;
@@ -12,7 +13,7 @@ interface Props {
 
 const Resources: FC<Props> = ({ course }) => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Resource[]>([]);
   const [showAddResource, setShowAddResource] = useState(false);
 
   const loadData = async () => {
@@ -38,7 +39,7 @@ const Resources: FC<Props> = ({ course }) => {
       </Box>
 
       {data.map((cur) => (
-        <ResourceListItem {...cur} />
+        <ResourceListItem {...cur} key={cur._id} />
       ))}
       {loading && <Spinner />}
       {data.length === 0 && !loading && <EmptyComp />}

@@ -22,55 +22,23 @@ export default async function OgImage() {
         style={{
           background: "#fff",
           width: "100%",
-          fontSize: 90,
           height: "100%",
           display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "column",
-          padding: 40,
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <div
+        <img
+          height={250}
+          width={500}
           style={{
             display: "flex",
-            flexDirection: "column",
+            objectFit: "contain",
+            marginBottom: 40,
           }}
-        >
-          <p style={{ margin: 0, padding: 0 }}>Final Year</p>
-          <p style={{ margin: 0, padding: 0 }}>Project Software</p>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-          }}
-        >
-          <p
-            style={{
-              margin: 0,
-              marginBottom: 20,
-              color: "#012970",
-              fontSize: 48,
-              padding: 0,
-            }}
-          >
-            By Emmanuella Adedji (190221002)
-          </p>
-          <img
-            height={250}
-            width={250}
-            style={{
-              display: "flex",
-              objectFit: "contain",
-              marginLeft: "auto",
-            }}
-            alt=""
-            src={
-              "https://fysps.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.9c5ff845.png&w=256&q=75"
-            }
-          />
-        </div>
+          alt=""
+          src={"https://esclass.vercel.app/images/logo.png"}
+        />
       </div>
     ),
     // ImageResponse options
