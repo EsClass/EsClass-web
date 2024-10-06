@@ -103,7 +103,7 @@ const LoginPage = () => {
             </CustomButton>
             <Link href="/get-started">
               <Button fullWidth sx={{ py: 2, borderRadius: 15 }}>
-                Login
+              Create account
               </Button>
             </Link>
           </form>
