@@ -33,7 +33,7 @@ const TutorDashboardPage = () => {
                 Your Courses
               </Typography>
               <Typography mb={4} variant="h4">
-                0
+                {auth.data?.courseCount}
               </Typography>
               <Link style={{ color: "var(--primary)" }} href="/">
                 View Courses

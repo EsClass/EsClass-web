@@ -1,6 +1,6 @@
 import Button from "@/components/UI/Button";
 import { addCourse } from "@/redux/actions/course";
-import { useAppDispatch } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { categories } from "@/utils/constants";
 import { Close } from "@mui/icons-material";
 import {
@@ -26,6 +26,7 @@ const defaultForm = {
 
 const AddNewCourseModal: FC<Props> = ({ onClose, open }) => {
   const dispatch = useAppDispatch();
+  const course = useAppSelector((s) => s.course);
   const [formData, setFormData] = useState(defaultForm);
 
   useEffect(() => {
@@ -102,7 +103,7 @@ const AddNewCourseModal: FC<Props> = ({ onClose, open }) => {
             ))}
           </TextField>
 
-          <Button type="submit" fullWidth>
+          <Button type="submit" fullWidth loading={course.loading}>
             Create Course
           </Button>
         </form>

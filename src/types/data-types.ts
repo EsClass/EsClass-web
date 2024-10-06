@@ -12,6 +12,7 @@ export interface User {
 export interface Tutor extends User {
   institution: string;
   earnings: number;
+  courseCount: number;
   expertise: string[];
 }
 
