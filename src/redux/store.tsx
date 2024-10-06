@@ -10,6 +10,7 @@ import {
 import { persistReducer, persistStore } from "redux-persist";
 import localStorage from "redux-persist/es/storage";
 import authSlices from "./slices/authSlices";
+import courseSlices from "./slices/courseSlices";
 
 const persistConfig = {
   key: "root",
@@ -18,6 +19,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
   auth: authSlices,
+  course: courseSlices,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

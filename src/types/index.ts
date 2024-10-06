@@ -14,3 +14,9 @@ export interface SignupTutorForm {
   email: string;
   institution: string;
 }
+
+export interface AddCourseForm {
+  title: string;
+  description: string;
+  category: string[];
+}

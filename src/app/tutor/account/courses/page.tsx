@@ -3,15 +3,24 @@
 import EmptyComp from "@/components/EmptyComp";
 import MainLayout from "@/components/navs/MainLayout";
 import AddNewCourseModal from "@/components/Tutor/Course/AddNewCourse";
+import CourseListItem from "@/components/Tutor/Course/CourseListItem";
+import { getCoerces } from "@/redux/actions/course";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { School } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CoursePage = () => {
+  const courses = useAppSelector((s) => s.course);
+  const dispatch = useAppDispatch();
   const [showAddModal, setShowAddModal] = useState(false);
 
+  useEffect(() => {
+    dispatch(getCoerces());
+  }, []);
+
   return (
-    <MainLayout icon={<School />} title="Courses">
+    <MainLayout loading={courses.loading} icon={<School />} title="Courses">
       <Box className="flex">
         <Box flex={1}>
           <Typography variant="h6">Manage Your Courses</Typography>
@@ -28,7 +37,10 @@ const CoursePage = () => {
         </Button>
       </Box>
 
-      <EmptyComp />
+      {courses.data?.length === 0 && <EmptyComp />}
+      {courses.data?.map((cur) => (
+        <CourseListItem {...cur} key={cur._id} />
+      ))}
 
       <AddNewCourseModal
         open={showAddModal}

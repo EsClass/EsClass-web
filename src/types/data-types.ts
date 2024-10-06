@@ -14,3 +14,13 @@ export interface Tutor extends User {
   earnings: number;
   expertise: string[];
 }
+
+export interface Course {
+  _id: string;
+  title: string;
+  description: string;
+  category: string[];
+  tutor: string;
+  createdAt: string;
+  updatedAt: string;
+}

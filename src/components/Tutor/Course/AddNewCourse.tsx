@@ -1,4 +1,6 @@
 import Button from "@/components/UI/Button";
+import { addCourse } from "@/redux/actions/course";
+import { useAppDispatch } from "@/redux/store";
 import { categories } from "@/utils/constants";
 import { Close } from "@mui/icons-material";
 import {
@@ -9,14 +11,38 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 interface Props {
   open: boolean;
   onClose: () => void;
 }
 
+const defaultForm = {
+  title: "",
+  description: "",
+  category: "",
+};
+
 const AddNewCourseModal: FC<Props> = ({ onClose, open }) => {
+  const dispatch = useAppDispatch();
+  const [formData, setFormData] = useState(defaultForm);
+
+  useEffect(() => {
+    setFormData(defaultForm);
+  }, [open]);
+
+  const submitHandler = async (e: any) => {
+    e.preventDefault();
+    const d = {
+      ...formData,
+      category: [formData.category],
+    };
+    const res = await dispatch(addCourse(d));
+
+    if (res.success) onClose();
+  };
+
   return (
     <Dialog open={open} onClose={onClose} fullWidth>
       <Box
@@ -35,9 +61,22 @@ const AddNewCourseModal: FC<Props> = ({ onClose, open }) => {
           Ensure that all the course details are accurate before submission.
         </Typography>
 
-        <form>
-          <TextField label="Course Title" fullWidth required sx={{ mb: 3 }} />
+        <form onSubmit={submitHandler}>
           <TextField
+            value={formData.title}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
+            label="Course Title"
+            fullWidth
+            required
+            sx={{ mb: 3 }}
+          />
+          <TextField
+            value={formData.description}
+            onChange={(e) =>
+              setFormData({ ...formData, description: e.target.value })
+            }
             multiline
             rows={6}
             label="Course Description"
@@ -48,6 +87,10 @@ const AddNewCourseModal: FC<Props> = ({ onClose, open }) => {
           <TextField
             label="Choose a category"
             fullWidth
+            value={formData.category}
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }
             required
             sx={{ mb: 4 }}
             select
@@ -59,7 +102,9 @@ const AddNewCourseModal: FC<Props> = ({ onClose, open }) => {
             ))}
           </TextField>
 
-          <Button fullWidth>Create Course</Button>
+          <Button type="submit" fullWidth>
+            Create Course
+          </Button>
         </form>
       </Box>
     </Dialog>
