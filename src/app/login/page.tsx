@@ -2,9 +2,13 @@
 
 import Footer from "@/components/navs/Footer";
 import Header from "@/components/navs/Header";
+import CustomButton from "@/components/UI/Button";
+import { login } from "@/redux/actions/auth";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const defaultForm = {
@@ -12,9 +16,21 @@ const defaultForm = {
   password: "",
 };
 
-const GetStarted = () => {
+const LoginPage = () => {
+  const dispatch = useAppDispatch();
+  const { loading } = useAppSelector((s) => s.auth);
+  const router = useRouter();
   const [formSata, setFormData] = useState(defaultForm);
 
+  const submitHandler = async (e: any) => {
+    e.preventDefault();
+
+    const res = await dispatch(login(formSata));
+    if (res.success)
+      router.push(
+        res.data?.role === "Tutor" ? "/tutor/account" : "/student/account"
+      );
+  };
   return (
     <>
       <Header />
@@ -38,7 +54,10 @@ const GetStarted = () => {
             Login to your account to continue
           </Typography>
 
-          <form style={{ width: "100%", maxWidth: 450 }}>
+          <form
+            style={{ width: "100%", maxWidth: 450 }}
+            onSubmit={submitHandler}
+          >
             <TextField
               required
               fullWidth
@@ -73,14 +92,15 @@ const GetStarted = () => {
               label="Password"
             />
 
-            <Button
+            <CustomButton
               fullWidth
               type="submit"
-              sx={{ py: 2, borderRadius: 15 }}
+              loading={loading}
+              sx={{ borderRadius: 15 }}
               variant="contained"
             >
-              Create an account
-            </Button>
+              Login
+            </CustomButton>
             <Link href="/get-started">
               <Button fullWidth sx={{ py: 2, borderRadius: 15 }}>
                 Create an account
@@ -94,4 +114,4 @@ const GetStarted = () => {
   );
 };
 
-export default GetStarted;
+export default LoginPage;

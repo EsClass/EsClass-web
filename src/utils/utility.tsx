@@ -81,3 +81,25 @@ export const formatNumber = (phoneNumber: string) => {
   let digits = phoneNumber.replace(/\s+/g, "").replace(/\D/g, "");
   return "+234" + digits;
 };
+
+export const currencyFormatter = (
+  value: number | string = 0,
+  options?: any
+) => {
+  let v: string | number = +value;
+  const defaultOptions = {
+    significantDigits: 2,
+    thousandsSeparator: ",",
+    decimalSeparator: ".",
+    symbol: "₦",
+  };
+  if (typeof v !== "number") v = 0.0;
+  options = { ...defaultOptions, ...options };
+  v = v.toFixed(options.significantDigits);
+
+  const [currency, decimal] = v.split(".");
+  return `${options.symbol} ${currency.replace(
+    /\B(?=(\d{3})+(?!\d))/g,
+    options.thousandsSeparator
+  )}${options.decimalSeparator}${decimal}`;
+};

@@ -1,4 +1,4 @@
-import { Student, Supervisor } from "@/types/data-types";
+import { Tutor } from "@/types/data-types";
 import { createSlice } from "@reduxjs/toolkit";
 import { PURGE } from "redux-persist";
 
@@ -6,8 +6,8 @@ interface AuthState {
   loading: boolean;
   openDrawer: boolean;
   loggedIn: boolean;
-  data: Supervisor | Student | null;
-  error: string | null;
+  token?: string;
+  data: Tutor | null;
 }
 
 const initialState: AuthState = {
@@ -15,7 +15,6 @@ const initialState: AuthState = {
   loggedIn: false,
   data: null,
   openDrawer: false,
-  error: null,
 };
 
 const authSlice = createSlice({
@@ -24,17 +23,15 @@ const authSlice = createSlice({
   reducers: {
     setAuthLoading: (state, { payload }) => {
       state.loading = payload;
-      state.error = null;
-    },
-    setAuthError: (state, { payload }) => {
-      state.error = payload;
-      state.loading = false;
     },
     setAuthData: (state, { payload }) => {
       state.data = payload;
     },
     setLoggedIn: (state, { payload }) => {
       state.loggedIn = payload;
+    },
+    setToken: (state, { payload }) => {
+      state.token = payload;
     },
     toggleDrawer: (state) => {
       state.openDrawer = !state.openDrawer;
@@ -46,10 +43,10 @@ const authSlice = createSlice({
 });
 
 export const {
-  setAuthError,
   setLoggedIn,
   setAuthLoading,
   setAuthData,
   toggleDrawer,
+  setToken,
 } = authSlice.actions;
 export default authSlice.reducer;

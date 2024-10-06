@@ -1,6 +1,6 @@
 const config = {
   dev: {
-    baseUrl: "https://estate-backend-erre.onrender.com/api/",
+    baseUrl: "https://es-class-server.vercel.app/api/v1",
   },
 };
 
