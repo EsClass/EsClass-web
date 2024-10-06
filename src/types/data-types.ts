@@ -23,5 +23,6 @@ export interface Course {
   category: string[];
   tutor: string;
   createdAt: string;
+  status : "Draft" | "Published"
   updatedAt: string;
 }
