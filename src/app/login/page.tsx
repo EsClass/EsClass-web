@@ -109,7 +109,7 @@ const LoginPage = () => {
           </form>
         </Box>
       </section>
-      <Footer />?
+      <Footer />
     </>
   );
 };
