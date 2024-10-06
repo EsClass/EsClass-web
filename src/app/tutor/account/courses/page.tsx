@@ -21,7 +21,7 @@ const CoursePage = () => {
 
   return (
     <MainLayout loading={courses.loading} icon={<School />} title="Courses">
-      <Box className="flex">
+      <Box mb={6} className="flex">
         <Box flex={1}>
           <Typography variant="h6">Manage Your Courses</Typography>
           <Typography className="text">
