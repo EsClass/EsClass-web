@@ -93,7 +93,7 @@ const GetStarted = () => {
                 borderRadius: 10,
                 px: 6,
                 py: 1.5,
-              }}
+               }}
             >
               Continue
             </Button>
