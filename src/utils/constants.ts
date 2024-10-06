@@ -1,8 +1,8 @@
 export const phoneRegex = /^(7\d{9}|8\d{9}|9\d{9})$/;
 export const variables = {
   address: "Manchester, UK",
-  phone: "+44.3929.7339",
-  email: "support@guardiangems.co.uk",
+  phone: "+234 808 904 350",
+  email: "odunilade@gmail.com",
 };
 
 export const roles = [

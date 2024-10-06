@@ -72,18 +72,20 @@ const GetStarted = () => {
               }}
               label="Password"
             />
+            <Link href="#">
+              <Button
+                fullWidth
+                type="submit"
+                sx={{ py: 2, borderRadius: 15 }}
+                variant="contained"
+              >
+                Create an account
+              </Button>
+            </Link>
 
-            <Button
-              fullWidth
-              type="submit"
-              sx={{ py: 2, borderRadius: 15 }}
-              variant="contained"
-            >
-              Create an account
-            </Button>
             <Link href="/get-started">
               <Button fullWidth sx={{ py: 2, borderRadius: 15 }}>
-                Create an account
+                Login
               </Button>
             </Link>
           </form>

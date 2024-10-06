@@ -110,15 +110,17 @@ const TutorSignup = () => {
               }}
               label="Password"
             />
+            <Link href='/verifypage'>
+              <Button
+                fullWidth
+                type="submit"
+                sx={{ py: 2, borderRadius: 15 }}
+                variant="contained"
+              >
+                Create an account
+              </Button>
+            </Link>
 
-            <Button
-              fullWidth
-              type="submit"
-              sx={{ py: 2, borderRadius: 15 }}
-              variant="contained"
-            >
-              Create an account
-            </Button>
             <Link href="/login">
               <Button fullWidth sx={{ py: 2, borderRadius: 15 }}>
                 Login
