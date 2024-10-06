@@ -27,5 +27,5 @@ export interface AddResourceForm {
   description: string;
   url: string;
   course: string;
-  type: "File" | "Video";
+  type: "File" | "Video" | string;
 }

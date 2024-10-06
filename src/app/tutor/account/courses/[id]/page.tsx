@@ -32,7 +32,7 @@ function CustomTabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ py: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -130,7 +130,7 @@ const CoursePage = ({ params }: any) => {
         </Tabs>
       </Box>
       <CustomTabPanel value={tab} index={0}>
-        <Resources />
+        <Resources course={params.id} />
       </CustomTabPanel>
       <CustomTabPanel value={tab} index={1}>
         Questions with solutions

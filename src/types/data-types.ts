@@ -23,6 +23,18 @@ export interface Course {
   category: string[];
   tutor: string;
   createdAt: string;
-  status : "Draft" | "Published"
+  status: "Draft" | "Published";
+  updatedAt: string;
+}
+
+export interface Resource {
+  course: string;
+  title: string;
+  description: "This is the description";
+  type: "File" | "Video";
+  url: string;
+  tutor: string;
+  _id: string;
+  createdAt: string;
   updatedAt: string;
 }

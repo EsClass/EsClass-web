@@ -1,14 +1,33 @@
 import EmptyComp from "@/components/EmptyComp";
+import Spinner from "@/components/UI/Spinner";
+import { getResources } from "@/redux/actions/course";
 import { Box, Button, Typography } from "@mui/material";
+import { FC, useEffect, useState } from "react";
 import AddNewResource from "./AddResource";
-import { useState } from "react";
+import ResourceListItem from "./ResourceListItem";
 
-const Resources = () => {
+interface Props {
+  course?: string;
+}
+
+const Resources: FC<Props> = ({ course }) => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<any[]>([]);
   const [showAddResource, setShowAddResource] = useState(false);
+
+  const loadData = async () => {
+    setLoading(true);
+    const res = await getResources(course!);
+    if (res.success) setData(res.data);
+    setLoading(false);
+  };
+  useEffect(() => {
+    if (course) loadData();
+  }, [course]);
 
   return (
     <>
-      <Box className="flex">
+      <Box className="flex" mb={4}>
         <Typography variant="h6" fontWeight={500} flex={1}>
           Learning Materials
         </Typography>
@@ -18,8 +37,14 @@ const Resources = () => {
         </Button>
       </Box>
 
-      <EmptyComp />
+      {data.map((cur) => (
+        <ResourceListItem {...cur} />
+      ))}
+      {loading && <Spinner />}
+      {data.length === 0 && !loading && <EmptyComp />}
       <AddNewResource
+        course={course!}
+        onSuccess={loadData}
         onClose={() => setShowAddResource(false)}
         open={showAddResource}
       />

@@ -1,9 +1,11 @@
 import Button from "@/components/UI/Button";
 import FileInput from "@/components/UI/FileInput";
-import { addCourse } from "@/redux/actions/course";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { addResource } from "@/redux/actions/course";
+import { useAppDispatch } from "@/redux/store";
 import { FilePickerResult } from "@/types";
 import { resourceTypes } from "@/utils/constants";
+import { uploadHelper } from "@/utils/uploadHelper";
+import { errorMessage, showMessage } from "@/utils/utility";
 import { Close } from "@mui/icons-material";
 import {
   Box,
@@ -18,6 +20,8 @@ import { FC, useEffect, useState } from "react";
 interface Props {
   open: boolean;
   onClose: () => void;
+  course: string;
+  onSuccess: () => void;
 }
 
 const defaultForm = {
@@ -26,9 +30,9 @@ const defaultForm = {
   type: "",
 };
 
-const AddNewResource: FC<Props> = ({ onClose, open }) => {
+const AddNewResource: FC<Props> = ({ onClose, onSuccess, open, course }) => {
   const dispatch = useAppDispatch();
-  const course = useAppSelector((s) => s.course);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState(defaultForm);
   const [picker, setPicker] = useState<FilePickerResult | null>(null);
 
@@ -38,13 +42,27 @@ const AddNewResource: FC<Props> = ({ onClose, open }) => {
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
-    const d = {
-      ...formData,
-      category: [formData.category],
-    };
-    const res = await dispatch(addCourse(d));
 
-    if (res.success) onClose();
+    try {
+      setLoading(true);
+      const url = await uploadHelper(picker?.file!, "resource");
+      const d = {
+        ...formData,
+        course,
+        url: url,
+      };
+      const res = await dispatch(addResource(d));
+      if (res.success) {
+        onClose();
+        onSuccess();
+      }
+    } catch (error) {
+      showMessage({
+        variant: "error",
+        message: errorMessage(error),
+      });
+    }
+    setLoading(false);
   };
 
   return (
@@ -111,12 +129,7 @@ const AddNewResource: FC<Props> = ({ onClose, open }) => {
             label="Select File"
           />
 
-          <Button
-            type="submit"
-            sx={{ mt: 4 }}
-            fullWidth
-            loading={course.loading}
-          >
+          <Button type="submit" sx={{ mt: 4 }} fullWidth loading={loading}>
             Create Course
           </Button>
         </form>
