@@ -1,12 +1,12 @@
-import { auth, db } from "@/api/firebase";
-import { Student, Supervisor } from "@/types/data-types";
+import client from "@/api/client";
+import { SignupTutorForm } from "@/types";
 import { errorMessage, showMessage } from "@/utils/utility";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { setAuthData, setAuthLoading, setLoggedIn } from "../slices/authSlices";
+  setAuthData,
+  setAuthLoading,
+  setLoggedIn,
+  setToken,
+} from "../slices/authSlices";
 import { AppDispatch, persistor } from "../store";
 
 const handleError = (error: any, dispatch: AppDispatch) => {
@@ -22,19 +22,15 @@ const handleError = (error: any, dispatch: AppDispatch) => {
 };
 
 export const signup =
-  (data: Supervisor | Student) => async (dispatch: AppDispatch) => {
+  (data: SignupTutorForm) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setAuthLoading(true));
-      const { user } = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password!
-      );
-      await setDoc(doc(db, "user", user.uid), data, { merge: true });
+      const res = (await client.post("user/create-account", data)).data;
+      console.log("res", res);
       dispatch(setAuthLoading(false));
-      dispatch(setAuthData(data));
+      dispatch(setAuthData(res.data));
+      dispatch(setToken(res.token));
       dispatch(setLoggedIn(true));
-
       return {
         success: true,
       };
@@ -43,35 +39,40 @@ export const signup =
     }
   };
 
-export const loginAdmin =
+export const login =
   (data: { email: string; password: string }) =>
   async (dispatch: AppDispatch) => {
     try {
       dispatch(setAuthLoading(true));
-      const { user } = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-      const ref = doc(db, "users", user.uid);
-      const res = await getDoc(ref);
-      if (!res.exists()) throw new Error("User not found");
-      const payload = {
-        ...res.data(),
-        emailVerified: user.emailVerified,
-        _id: user.uid,
-      };
+      const res = await (await client.post("user/login", data)).data;
+
       dispatch(setLoggedIn(true));
+      dispatch(setToken(res.token));
       dispatch(setAuthLoading(false));
-      dispatch(setAuthData(payload));
       return {
         success: true,
-        data: payload,
+        data: {
+          role: res.role,
+        },
       };
     } catch (error) {
       return { ...handleError(error, dispatch) };
     }
   };
+export const getCurrentUser = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(setAuthLoading(true));
+    const res = await (await client.get("user")).data;
+    dispatch(setAuthLoading(false));
+    dispatch(setAuthData(res.data));
+    return {
+      success: true,
+    };
+  } catch (error) {
+    return { ...handleError(error, dispatch) };
+  }
+};
+
 export const logout = () => async (dispatch: AppDispatch) => {
   await persistor.purge();
 };

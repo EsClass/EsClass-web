@@ -1,12 +1,16 @@
 export type Role = "Student" | "Tutor";
 
 export interface User {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  created_At: Date;
-  picture: string;
-  password?: string;
+  name: string;
   role: Role;
+  email: string;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Tutor extends User {
+  institution: string;
+  earnings: number;
+  expertise: string[];
 }
