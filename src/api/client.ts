@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import config from "./config";
-import store from "@/redux/store";
 import { setLoggedIn } from "@/redux/slices/authSlices";
+import store from "@/redux/store";
 import { errorMessage } from "@/utils/utility";
+import config from "./config";
 
 const client = axios.create({
   baseURL: config.baseUrl,
@@ -34,14 +34,8 @@ client.interceptors.response.use(
       store.getState().auth.loggedIn
     ) {
       const { dispatch } = store;
-      if (errorMessage(error) !== "current password is incorrect")
-        dispatch(setLoggedIn(false));
-      // return Promise.reject(new Error("Session has timed out"));
-    } else if (
-      errorMessage(error).includes("403") ||
-      errorMessage(error).includes("401")
-    ) {
-      // return Promise.reject(new Error("Session has expired due to inactivity"));
+      dispatch(setLoggedIn(false));
+      return Promise.reject(new Error("Session has timed out"));
     } else if (errorMessage(error).includes("502"))
       return Promise.reject(
         new Error("Something went wrong, please try again later")

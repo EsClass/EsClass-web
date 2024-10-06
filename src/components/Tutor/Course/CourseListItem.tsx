@@ -8,6 +8,7 @@ import {
   More,
   MoreVert,
 } from "@mui/icons-material";
+import Link from "next/link";
 interface Props extends Course {}
 
 const CourseListItem: FC<Props> = ({
@@ -48,7 +49,9 @@ const CourseListItem: FC<Props> = ({
         )}
       </Box>
 
-      <Button variant="outlined">View Details</Button>
+      <Link href={"/tutor/account/courses/" + _id}>
+        <Button variant="outlined">View Details</Button>
+      </Link>
       <IconButton sx={{ ml: 1 }}>
         <MoreVert />
       </IconButton>

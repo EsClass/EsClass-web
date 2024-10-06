@@ -1,5 +1,5 @@
 import client from "@/api/client";
-import { AddCourseForm, SignupTutorForm } from "@/types";
+import { AddCourseForm } from "@/types";
 import { errorMessage, showMessage } from "@/utils/utility";
 import { setCourseLoading, setCourses } from "../slices/courseSlices";
 import { AppDispatch } from "../store";
@@ -43,3 +43,21 @@ export const addCourse =
       return { ...handleError(error, dispatch) };
     }
   };
+
+export const getSingleCourse = async (id: string) => {
+  try {
+    const res = (await client.get("courses/" + id)).data;
+    return {
+      success: true,
+      data: res.data,
+    };
+  } catch (error) {
+    showMessage({
+      variant: "error",
+      message: errorMessage(error),
+    });
+    return {
+      success: false,
+    };
+  }
+};
