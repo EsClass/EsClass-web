@@ -45,7 +45,7 @@ const ResourceListItem: FC<Props> = ({
         {moment(createdAt).fromNow(false)}
       </Typography>
 
-      <a target="_blank">
+      <a target="_blank" href={url}>
         <IconButton color="primary">
           <OpenInNew />
         </IconButton>

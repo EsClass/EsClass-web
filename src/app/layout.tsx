@@ -10,6 +10,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "EsClass",
+  description: "Unlock Top Learning Resources & Practice Questions",
   openGraph: {
     type: "website",
     title: "EsClass",

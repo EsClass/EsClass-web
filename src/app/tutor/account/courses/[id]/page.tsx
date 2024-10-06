@@ -1,6 +1,7 @@
 "use client";
 
 import MainLayout from "@/components/navs/MainLayout";
+import Questions from "@/components/Tutor/Course/Questions";
 import Resources from "@/components/Tutor/Course/Resources";
 import { getSingleCourse } from "@/redux/actions/course";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
@@ -133,7 +134,7 @@ const CoursePage = ({ params }: any) => {
         <Resources course={params.id} />
       </CustomTabPanel>
       <CustomTabPanel value={tab} index={1}>
-        Questions with solutions
+        <Questions course={params.id} />
       </CustomTabPanel>
       <CustomTabPanel value={tab} index={2}>
         Assessments
