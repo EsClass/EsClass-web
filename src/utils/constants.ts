@@ -28,6 +28,8 @@ export const roles = [
   },
 ];
 
+export const resourceTypes = ["Video", "File"];
+
 export const categories = [
   "Artificial Intelligence",
   "Biomedical Engineering",

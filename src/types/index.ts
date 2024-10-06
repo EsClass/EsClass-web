@@ -1,5 +1,6 @@
 export interface FilePickerOptions {
-  fileType: "image" | "video" | "pdf" | "all";
+  fileType?: "image" | "video" | "pdf" | "all";
+  accept?: string;
 }
 
 export interface FilePickerResult {
@@ -19,4 +20,12 @@ export interface AddCourseForm {
   title: string;
   description: string;
   category: string[];
+}
+
+export interface AddResourceForm {
+  title: string;
+  description: string;
+  url: string;
+  course: string;
+  type: "File" | "Video";
 }

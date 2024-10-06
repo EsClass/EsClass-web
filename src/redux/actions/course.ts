@@ -1,5 +1,5 @@
 import client from "@/api/client";
-import { AddCourseForm } from "@/types";
+import { AddCourseForm, AddResourceForm } from "@/types";
 import { errorMessage, showMessage } from "@/utils/utility";
 import { setCourseLoading, setCourses } from "../slices/courseSlices";
 import { AppDispatch } from "../store";
@@ -59,5 +59,33 @@ export const getSingleCourse = async (id: string) => {
     return {
       success: false,
     };
+  }
+};
+
+export const addResource =
+  (data: AddResourceForm) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setCourseLoading(true));
+      const res = (await client.post("resource", data)).data;
+      dispatch(setCourseLoading(false));
+      return {
+        success: true,
+      };
+    } catch (error) {
+      return { ...handleError(error, dispatch) };
+    }
+  };
+
+export const getResources = () => async (courseId: string) => {
+  try {
+    dispatch(setCourseLoading(true));
+    const res = (await client.get("courses")).data;
+    dispatch(setCourseLoading(false));
+    dispatch(setCourses(res.data));
+    return {
+      success: true,
+    };
+  } catch (error) {
+    return { ...handleError(error, dispatch) };
   }
 };
