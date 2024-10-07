@@ -1,7 +1,7 @@
 "use client";
 import MainLayout from "@/components/navs/MainLayout";
-import { ArrowBack, School } from "@mui/icons-material";
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { ArrowBack, Scale, School } from "@mui/icons-material";
+import { Box, Grid, Switch, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -31,10 +31,34 @@ const AddQuestion = ({ params }: any) => {
 
       <Grid container alignItems={"center"}>
         <Grid item xs={12} md={2}>
-          <Typography>Question Type</Typography>
+          <Typography className="text">Question Type</Typography>
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField select fullWidth label="Select Question Type" />
+        </Grid>
+      </Grid>
+      <Box mb={6} />
+      <Grid container alignItems={"center"}>
+        <Grid item xs={12} md={2}>
+          <Typography className="text">Difficulty Level</Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField select fullWidth label="Select Difficulty" />
+        </Grid>
+      </Grid>
+      <Box mb={6} />
+      <Grid container alignItems={"center"}>
+        <Grid item xs={12} md={2}>
+          <Typography className="text">Access Type</Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Box className="flex">
+            <Typography mr={3}>
+              Turn on monetization for this question
+            </Typography>
+
+            <Switch sx={{ transform: "scale(1.2)" }} />
+          </Box>
         </Grid>
       </Grid>
     </MainLayout>
