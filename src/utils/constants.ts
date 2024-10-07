@@ -63,3 +63,6 @@ export const categories = [
   "Statistics",
   "Web Development",
 ];
+
+export const difficulties = ["Easy", "Medium", "Hard"];
+export const questionTypes = ["Boolean", "Descriptive"];

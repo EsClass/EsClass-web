@@ -29,3 +29,14 @@ export interface AddResourceForm {
   course: string;
   type: "File" | "Video" | string;
 }
+
+export type Difficulty = "Easy" | "Medium" | "Hard";
+export type QuestionType = "Boolean" | "Descriptive";
+export interface AddQuestionForm {
+  question: string;
+  solution: string;
+  difficultyLevel: Difficulty;
+  questionType: QuestionType;
+  course: string;
+  isMonetized: boolean;
+}

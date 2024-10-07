@@ -1,5 +1,5 @@
 import client from "@/api/client";
-import { AddCourseForm, AddResourceForm } from "@/types";
+import { AddCourseForm, AddQuestionForm, AddResourceForm } from "@/types";
 import { errorMessage, showMessage } from "@/utils/utility";
 import { setCourseLoading, setCourses } from "../slices/courseSlices";
 import { AppDispatch } from "../store";
@@ -87,3 +87,75 @@ export const getResources = async (courseId: string) => {
     return { ...handleError(error) };
   }
 };
+
+export const addQuestion =
+  (data: AddQuestionForm) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setCourseLoading(true));
+      const res = (await client.post("questions", data)).data;
+      dispatch(setCourseLoading(false));
+      return {
+        success: true,
+        data: res.data,
+      };
+    } catch (error) {
+      dispatch(setCourseLoading(false));
+      return { ...handleError(error, dispatch) };
+    }
+  };
+
+export const getQuestions = async (courseId: string) => {
+  try {
+    const res = (await client.get(`questions/course/${courseId}`)).data;
+    return {
+      success: true,
+      data: res.data,
+    };
+  } catch (error) {
+    return { ...handleError(error) };
+  }
+};
+
+export const getSingleQuestion = async (questionId: string) => {
+  try {
+    const res = (await client.get(`questions/${questionId}`)).data;
+    return {
+      success: true,
+      data: res.data,
+    };
+  } catch (error) {
+    return { ...handleError(error) };
+  }
+};
+
+export const updateQuestion =
+  (questionId: string, data: AddQuestionForm) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setCourseLoading(true));
+      const res = (await client.put(`questions/${questionId}`, data)).data;
+      dispatch(setCourseLoading(false));
+      return {
+        success: true,
+        data: res.data,
+      };
+    } catch (error) {
+      dispatch(setCourseLoading(false));
+      return { ...handleError(error, dispatch) };
+    }
+  };
+
+export const deleteQuestion =
+  (questionId: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setCourseLoading(true));
+      await client.delete(`questions/${questionId}`);
+      dispatch(setCourseLoading(false));
+      return {
+        success: true,
+      };
+    } catch (error) {
+      dispatch(setCourseLoading(false));
+      return { ...handleError(error, dispatch) };
+    }
+  };
