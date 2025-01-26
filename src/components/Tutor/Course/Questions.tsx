@@ -1,8 +1,11 @@
 import EmptyComp from "@/components/EmptyComp";
 import Spinner from "@/components/UI/Spinner";
+import { getQuestions, getResources } from "@/redux/actions/course";
+import { Question } from "@/types/data-types";
 import { Box, Button, Typography } from "@mui/material";
 import Link from "next/link";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import QuestionListItem from "./QuestionListItem";
 
 interface Props {
   course: string;
@@ -10,7 +13,17 @@ interface Props {
 
 const Questions: FC<Props> = ({ course }) => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Question[]>([]);
+
+  const loadData = async () => {
+    setLoading(true);
+    const res = await getQuestions(course!);
+    if (res.success) setData(res.data);
+    setLoading(false);
+  };
+  useEffect(() => {
+    if (course) loadData();
+  }, [course]);
 
   return (
     <>
@@ -23,6 +36,9 @@ const Questions: FC<Props> = ({ course }) => {
         </Link>
       </Box>
 
+      {data.map((cur) => (
+        <QuestionListItem {...cur} key={cur._id} />
+      ))}
       {loading && <Spinner />}
       {data.length === 0 && !loading && <EmptyComp />}
     </>

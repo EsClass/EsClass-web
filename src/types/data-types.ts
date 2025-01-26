@@ -1,3 +1,5 @@
+import { Difficulty, QuestionType } from ".";
+
 export type Role = "Student" | "Tutor";
 
 export interface User {
@@ -37,4 +39,17 @@ export interface Resource {
   _id: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Question {
+  _id: string;
+  questionNumber: number;
+  question: string;
+  solution: string;
+  questionType: QuestionType;
+  difficultyLevel: Difficulty;
+  isMonetized: boolean;
+  course: string;
+  tutor: string;
+  createdAt: string;
 }

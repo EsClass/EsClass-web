@@ -1,5 +1,7 @@
 import { Height, Padding, SearchOutlined } from "@mui/icons-material";
 import { GlobalStyles, IconButton } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { FC, useState } from "react";
 
 const styles = (
   <GlobalStyles
@@ -29,16 +31,31 @@ const styles = (
   />
 );
 
-const SearchBar = () => {
+interface Props {
+  search?: string;
+}
+
+const SearchBar: FC<Props> = ({ search }) => {
+  const [term, setTerm] = useState(search);
+  const router = useRouter();
+
+  const submitHandler = async (e: any) => {
+    e.preventDefault();
+    router.push("/search/" + term);
+  };
+
   return (
     <>
       {styles}
-      <form className="search-bar flex">
+      <form className="search-bar flex" onSubmit={submitHandler}>
         <input
+          type="search"
+          value={term}
+          onChange={(e) => setTerm(e.target.value)}
           className="search-input"
           placeholder="Search for resources / questions"
         />
-        <IconButton size="large">
+        <IconButton size="large" type="submit">
           <SearchOutlined />
         </IconButton>
       </form>
