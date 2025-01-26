@@ -4,13 +4,13 @@ import { errorMessage, showMessage } from "@/utils/utility";
 import { Typography } from "@mui/material";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import ResultResource from "./Result";
+import ResultResource, { ResultQuestion } from "./Result";
 
 const AllSearchResult = () => {
   const [loading, setLoading] = useState(false);
   const params = useParams();
-  const [resources, setResources] = useState<Resource[]>([]);
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [resources, setResources] = useState<any[]>([]);
+  const [questions, setQuestions] = useState<any[]>([]);
 
   const loadData = async () => {
     setLoading(true);
@@ -38,11 +38,14 @@ const AllSearchResult = () => {
         <Typography>Loading .....</Typography>
       ) : (
         <Typography className="text" mb={6}>
-          We found 15 similar questions that have already been answered! and 12
-          similar resources
+          We found {questions.length} similar questions that have already been
+          answered! and {resources.length} similar resources
         </Typography>
       )}
 
+      {questions.map((cur) => (
+        <ResultQuestion {...cur} key={cur._id} />
+      ))}
       {resources.map((cur) => (
         <ResultResource {...cur} key={cur._id} />
       ))}

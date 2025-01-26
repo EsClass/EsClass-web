@@ -65,3 +65,14 @@ export const currencyFormatter = (
     options.thousandsSeparator
   )}${options.decimalSeparator}${decimal}`;
 };
+
+export function htmlToText(htmlString?: string) {
+  // Create a new DOMParser instance
+  const parser = new DOMParser();
+
+  // Parse the HTML string into a DOM Document
+  const doc = parser.parseFromString(htmlString || "", "text/html");
+
+  // Extract and return the text content
+  return doc.body.textContent || "";
+}
