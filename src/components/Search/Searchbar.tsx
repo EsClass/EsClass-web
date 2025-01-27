@@ -1,3 +1,5 @@
+"use client";
+
 import { Height, Padding, SearchOutlined } from "@mui/icons-material";
 import { GlobalStyles, IconButton } from "@mui/material";
 import { useRouter } from "next/navigation";

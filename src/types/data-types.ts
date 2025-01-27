@@ -49,7 +49,19 @@ export interface Question {
   questionType: QuestionType;
   difficultyLevel: Difficulty;
   isMonetized: boolean;
-  course: string;
+  course: string | Course;
   tutor: string;
+  createdAt: string;
+}
+export interface QuestionFull {
+  _id: string;
+  questionNumber: number;
+  question: string;
+  solution: string;
+  questionType: QuestionType;
+  difficultyLevel: Difficulty;
+  isMonetized: boolean;
+  course: Course;
+  tutor: Tutor;
   createdAt: string;
 }

@@ -1,54 +1,39 @@
-"use client";
+"use server";
+import axiosService from "@/api/axiosServer";
 import Footer from "@/components/navs/Footer";
 import Header from "@/components/navs/Header";
-import AllSearchResult from "@/components/Search/AllSearchResult";
+import QuestionScreen from "@/components/QuestionDisplay/QuestionScreen";
 import SearchBar from "@/components/Search/Searchbar";
-import { Box, Tab, Tabs } from "@mui/material";
-import React, { useState } from "react";
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
+import { Box } from "@mui/material";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+
+async function getQuestion(id: string) {
+  try {
+    const res = (await axiosService.get(`questions/${id}`)).data?.data;
+    return res;
+  } catch (error: any) {
+    console.error(
+      "Error fetching question:",
+      error.response?.data || error.message
+    );
+    return notFound();
+  }
 }
+const QuestionResultPage = async ({ params }: any) => {
+  const questionId = params.id;
+  const question = await getQuestion(questionId); // Fetch question using Axios
 
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ py: 3 }}>{children}</Box>}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    sx: {
-      textTransform: "capitalize",
-      px: 4,
-    },
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-const QuestionResultPage = ({ params }: any) => {
-  const [tab, setTab] = useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setTab(newValue);
-  };
   return (
     <>
       <Header />
       <section className="section" style={{ paddingTop: 20 }}>
         <Box className="section-inner">
-          <SearchBar search={params.search} />
+          <SearchBar />
+
+          <Suspense fallback={<div>Loading...</div>}>
+            <QuestionScreen data={question} />
+          </Suspense>
         </Box>
       </section>
 
