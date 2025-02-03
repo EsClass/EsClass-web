@@ -1,3 +1,4 @@
+import { QuestionType } from "@/types";
 import { Course, Tutor } from "@/types/data-types";
 import { htmlToText } from "@/utils/utility";
 import { Box, Typography } from "@mui/material";
@@ -21,8 +22,8 @@ interface QProps {
   difficultyLevel: string;
   isMonetized: boolean;
   question: string;
-  questionNumber: number;
-  questionType: number;
+  questionNumber: string;
+  questionType: QuestionType;
   solution: string;
   tutor: Tutor;
   _id: string;
@@ -39,17 +40,21 @@ const ResultResource: FC<RProps> = ({
 }) => {
   return (
     <Box py={2} borderBottom={"1px solid #ddd"}>
-      <Box mb={1} className="flex">
-        <Typography
-          fontWeight={600}
-          mr={1}
-          textTransform={"uppercase"}
-          color="secondary"
-        >
-          {type}
-        </Typography>
-        <Typography fontWeight={600}>{title}</Typography>
-      </Box>
+      <Link href={"/r/" + _id}>
+        <Box mb={1} className="flex">
+          <Typography
+            fontWeight={600}
+            mr={1}
+            textTransform={"uppercase"}
+            color="secondary"
+          >
+            {type}
+          </Typography>
+
+          <Typography fontWeight={600}>{title}</Typography>
+        </Box>
+      </Link>
+
       <Typography className="text" variant="body2">
         {description.substring(0, 300)}..
       </Typography>

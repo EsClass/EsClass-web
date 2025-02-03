@@ -5,6 +5,7 @@ import Header from "@/components/navs/Header";
 import SearchBar from "@/components/Search/Searchbar";
 import { Box, Button, GlobalStyles, Grid, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 const styles = (
   <GlobalStyles
@@ -130,17 +131,19 @@ const HomePAge = () => {
                 Create and monetize your courses, resources, and tests with
                 ease.
               </Typography>
-              <Button
-                variant="contained"
-                color="secondary"
-                sx={{
-                  py: 1.5,
-                  px: 4,
-                  borderRadius: 8,
-                }}
-              >
-                Become a Tutor
-              </Button>
+              <Link href={"/tutor/signup"}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{
+                    py: 1.5,
+                    px: 4,
+                    borderRadius: 8,
+                  }}
+                >
+                  Become a Tutor
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </Box>

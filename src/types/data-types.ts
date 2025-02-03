@@ -32,7 +32,7 @@ export interface Course {
 export interface Resource {
   course: string;
   title: string;
-  description: "This is the description";
+  description: string;
   type: "File" | "Video";
   url: string;
   tutor: string;
@@ -43,7 +43,7 @@ export interface Resource {
 
 export interface Question {
   _id: string;
-  questionNumber: number;
+  questionNumber: string;
   question: string;
   solution: string;
   questionType: QuestionType;
@@ -64,4 +64,15 @@ export interface QuestionFull {
   course: Course;
   tutor: Tutor;
   createdAt: string;
+}
+export interface ResourceFull {
+  course: Course;
+  title: string;
+  description: string;
+  type: "File" | "Video";
+  url: string;
+  tutor: Tutor;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -1,10 +1,12 @@
 "use client";
+import client from "@/api/client";
 import Footer from "@/components/navs/Footer";
 import Header from "@/components/navs/Header";
 import AllSearchResult from "@/components/Search/AllSearchResult";
 import SearchBar from "@/components/Search/Searchbar";
+import { errorMessage, showMessage } from "@/utils/utility";
 import { Box, Tab, Tabs } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -44,6 +46,31 @@ const SearchPage = ({ params }: any) => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setTab(newValue);
   };
+
+  const [loading, setLoading] = useState(false);
+  const [resources, setResources] = useState<any[]>([]);
+  const [questions, setQuestions] = useState<any[]>([]);
+
+  const loadData = async () => {
+    setLoading(true);
+    try {
+      const res = (await client.get("search?keyword=" + params.search)).data;
+      setResources(res.resources);
+      setQuestions(res.questions);
+      console.log("res", res);
+    } catch (error) {
+      showMessage({
+        variant: "error",
+        message: errorMessage(error),
+      });
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (params.search) loadData();
+  }, [params.search]);
+
   return (
     <>
       <Header />
@@ -63,10 +90,28 @@ const SearchPage = ({ params }: any) => {
               </Tabs>
             </Box>
             <CustomTabPanel value={tab} index={0}>
-              <AllSearchResult />
+              <AllSearchResult
+                loading={loading}
+                questions={questions}
+                resources={resources}
+              />
             </CustomTabPanel>
-            <CustomTabPanel value={tab} index={1}></CustomTabPanel>
-            <CustomTabPanel value={tab} index={2}></CustomTabPanel>
+            <CustomTabPanel value={tab} index={1}>
+              <AllSearchResult
+                loading={loading}
+                questions={questions}
+                resources={resources}
+                mode="question"
+              />
+            </CustomTabPanel>
+            <CustomTabPanel value={tab} index={2}>
+              <AllSearchResult
+                loading={loading}
+                questions={questions}
+                resources={resources}
+                mode="resource"
+              />
+            </CustomTabPanel>
           </Box>
         </Box>
       </section>
